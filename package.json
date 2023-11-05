@@ -1,0 +1,20 @@
+{
+  "name": "weatherbot",
+  "version": "1.0.0",
+  "description": "Wether bot lesson by Adbulbosit",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "weather",
+    "nodejs"
+  ],
+  "author": "Abdulbosit Tuychiev",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "node-telegram-bot-api": "^0.64.0",
+    "nodemon": "^3.0.1"
+  }
+}
