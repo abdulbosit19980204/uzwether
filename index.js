@@ -13,11 +13,17 @@ bot.on("message",async (msg)=>{
         const data = response.data;
         const weather = data.weather[0].description;
         const temperature = data.main.temp - 273.15;
+        const icon = data.weather.icon
         const city = data.name;
         const humidity = data.main.humidity;
         const pressure = data.main.pressure;
         const windSpeed = data.wind.speed;
-        const message = `The weather in ${city} is ${weather} with a temperature of ${temperature.toFixed(2)}°C. The humidity is ${humidity}%, the pressure is ${pressure}hPa, and the wind speed is ${windSpeed}m/s.`;
+        const message = `🚩 Shaxar: ${city}
+        \n   Ob-xavo: ${weather} 
+        \n🌡 Tempratura: ${temperature.toFixed(2)}°C. 
+        \n🫧 Namlik ${humidity}%,
+        \n👁‍🗨 Bosim: ${pressure}hPa, 
+        \n🌿 Shamol tezligi ${windSpeed}m/s.`;
     
         bot.sendMessage(chatId, message);
       } catch (error) {
