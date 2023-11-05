@@ -2,6 +2,7 @@ const TelegramBot = require("node-telegram-bot-api")
 const axios = require("axios")
 const token = "6652285546:AAFlhNlR9juU36EkKYNujzTGYLM20uHFyZw"
 
+
 const bot  = new TelegramBot(token, {polling: true});
 bot.on("message",async (msg)=>{
     const chatId = msg.chat.id
@@ -18,16 +19,22 @@ bot.on("message",async (msg)=>{
         const humidity = data.main.humidity;
         const pressure = data.main.pressure;
         const windSpeed = data.wind.speed;
-        const message = `🚩 Shaxar: ${city}
-        \n   Ob-xavo: ${weather} 
-        \n🌡 Tempratura: ${temperature.toFixed(2)}°C. 
-        \n🫧 Namlik ${humidity}%,
-        \n👁‍🗨 Bosim: ${pressure}hPa, 
-        \n🌿 Shamol tezligi ${windSpeed}m/s.`;
+        const message = `🚩 <b>Shaxar</b>:<b> ${city}</b>
+        \n   <b>Ob-xavo:</b> ${weather} 
+        \n🌡 <b>Tempratura: </b>${temperature.toFixed(2)}°C. 
+        \n🫧 <b>Namlik: </b>${humidity}%,
+        \n👁‍🗨 <b>Bosim: </b>${pressure}hPa, 
+        \n🌿 <b>Shamol tezligi: </b>${windSpeed}m/s.`;
+        
     
-        bot.sendMessage(chatId, message);
+        bot.sendMessage(chatId, `${message}`, {parse_mode:"HTML"});
       } catch (error) {
-        bot.sendMessage(chatId, "City doesn't exist.");
+        // bot.sendMessage(chatId, "City doesn't exist.");
+        bot.sendMessage(msg.chat.id,
+            "<b>bold</b> \n <i>italic</i> \n <em>italic with em</em> \n <a href=\"http://www.example.com/\">inline URL</a> \n <code>inline fixed-width code</code> \n <pre>pre-formatted fixed-width code block</pre>"
+             ,{parse_mode : "HTML"}
+             );
+       
       }
     
 })
